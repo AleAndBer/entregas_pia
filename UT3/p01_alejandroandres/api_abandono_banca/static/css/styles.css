@@ -50,7 +50,6 @@ body {
   font-size: 0.85rem;
 }
 
-/* Header compacto */
 .header {
   background-color: rgba(17, 24, 39, 0.85);
   backdrop-filter: blur(12px);
@@ -128,7 +127,6 @@ body {
   color: #ffffff;
 }
 
-/* Layout Compacto */
 .main-container {
   max-width: 1100px;
   margin: 1rem auto;
@@ -148,7 +146,6 @@ body {
   }
 }
 
-/* Cards */
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
@@ -195,7 +192,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Quick Examples Pills */
 .quick-examples {
   display: flex;
   align-items: center;
@@ -284,7 +280,6 @@ body {
   color: #f87171;
 }
 
-/* Form Styles compactos */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -389,7 +384,6 @@ body {
   cursor: pointer;
 }
 
-/* Botón compacto */
 .btn-primary {
   width: 100%;
   padding: 0.65rem 1rem;
@@ -436,7 +430,6 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Estado Inicial Vacío */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -471,7 +464,6 @@ body {
   line-height: 1.4;
 }
 
-/* Resultados */
 .result-box {
   display: flex;
   flex-direction: column;
@@ -525,7 +517,6 @@ body {
   border: 1px solid var(--risk-high-border);
 }
 
-/* Probabilidad y Barra */
 .probabilidad-container {
   display: flex;
   flex-direction: column;
@@ -576,7 +567,6 @@ body {
   background: linear-gradient(90deg, #dc2626, #ef4444);
 }
 
-/* Grid de métricas */
 .metrics-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -607,7 +597,6 @@ body {
   font-weight: 600;
 }
 
-/* Recomendación */
 .recommendation-card {
   background: rgba(30, 41, 59, 0.4);
   border: 1px solid rgba(59, 130, 246, 0.25);
@@ -643,7 +632,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Alerta de Error */
 .error-box {
   display: flex;
   align-items: center;
@@ -676,7 +664,6 @@ body {
   color: #fca5a5;
 }
 
-/* Footer compacto */
 .footer {
   text-align: center;
   padding: 0.85rem 1rem;
