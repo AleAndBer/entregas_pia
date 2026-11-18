@@ -1,4 +1,3 @@
-// Script para gestionar la interacción del formulario y la llamada a la API
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-cliente');
   const btnCalcular = document.getElementById('btn-calcular');
@@ -22,14 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Estado visual de carga
     btnCalcular.disabled = true;
     btnText.textContent = 'Calculando inferencia...';
     if (btnIcon) btnIcon.style.display = 'none';
     spinner.style.display = 'inline-block';
     resultadoError.style.display = 'none';
 
-    // Construcción del objeto de entrada según el esquema Pydantic ClienteInput
     const payload = {
       id_cliente: document.getElementById('id_cliente').value.trim(),
       edad: parseInt(document.getElementById('edad').value, 10),
@@ -66,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
 
-      // Renderizamos la respuesta recibida
       renderResultado(payload.id_cliente, data);
 
     } catch (err) {
@@ -89,14 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const probPct = (data.probabilidad_abandono * 100).toFixed(1);
 
-    // Ajuste de textos y métricas
     resIdCliente.textContent = data.id_cliente || idCliente;
     probabilidadValor.textContent = `${probPct}%`;
     progressBarFill.style.width = `${Math.min(Math.max(probPct, 0), 100)}%`;
     resAbandono.textContent = data.abandono === 1 ? '1 (Cancela)' : '0 (Permanece)';
     resAccion.textContent = data.accion_recomendada;
 
-    // Reseteo de clases de riesgo previas
     badgeRiesgo.className = 'badge';
     progressBarFill.className = 'progress-bar-fill';
 
@@ -118,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Configuración de ejemplos predefinidos
   const ejemplos = {
     low: {
       id_cliente: 'CLI-1007',
@@ -161,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Asignar listeners a los botones de ejemplo
   document.querySelectorAll('.btn-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       const tipo = btn.getAttribute('data-example');
@@ -180,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('nivel_estudios').value = datos.nivel_estudios;
       document.getElementById('nivel_satisfaccion').value = datos.nivel_satisfaccion;
 
-      // Disparamos automáticamente el cálculo
       form.dispatchEvent(new Event('submit'));
     });
   });

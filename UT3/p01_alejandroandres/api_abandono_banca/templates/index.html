@@ -1,335 +1,650 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BancaPredict AI - Sistema de Predicción de Abandono</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <!-- Encabezado -->
-  <header class="header">
-    <div class="header-container">
-      <div class="logo-area">
-        <div class="logo-icon-wrapper">
-          <!-- SVG: Edificio Banco / AI -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 21h18"/>
-            <path d="M3 10h18"/>
-            <path d="M5 6l7-3 7 3"/>
-            <path d="M4 10v11"/>
-            <path d="M20 10v11"/>
-            <path d="M8 14v4"/>
-            <path d="M12 14v4"/>
-            <path d="M16 14v4"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BancaPredict AI - Sistema de Predicción de Abandono</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-area">
+          <div class="logo-icon-wrapper">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 21h18" />
+              <path d="M3 10h18" />
+              <path d="M5 6l7-3 7 3" />
+              <path d="M4 10v11" />
+              <path d="M20 10v11" />
+              <path d="M8 14v4" />
+              <path d="M12 14v4" />
+              <path d="M16 14v4" />
+            </svg>
+          </div>
+          <div>
+            <h1>BancaPredict AI</h1>
+            <p class="subtitle">
+              Predicción Inteligente de Riesgo de Abandono de Clientes
+            </p>
+          </div>
+        </div>
+        <a href="/docs" target="_blank" class="api-docs-link">
+          <span>Swagger API</span>
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            ></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
-        </div>
-        <div>
-          <h1>BancaPredict AI</h1>
-          <p class="subtitle">Predicción Inteligente de Riesgo de Abandono de Clientes</p>
-        </div>
+        </a>
       </div>
-      <a href="/docs" target="_blank" class="api-docs-link">
-        <span>Swagger API</span>
-        <!-- SVG: Flecha externa -->
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-          <polyline points="15 3 21 3 21 9"></polyline>
-          <line x1="10" y1="14" x2="21" y2="3"></line>
-        </svg>
-      </a>
-    </div>
-  </header>
+    </header>
 
-  <!-- Contenedor Principal -->
-  <main class="main-container">
-    
-    <!-- Columna Izquierda: Formulario de Entrada -->
-    <section class="card form-card">
-      <div class="card-header">
-        <div class="card-title-group">
-          <span class="card-title-icon">
-            <!-- SVG: Form / Edit -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <polyline points="16 11 18 13 22 9"></polyline>
+    <main class="main-container">
+      <section class="card form-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <polyline points="16 11 18 13 22 9"></polyline>
+              </svg>
+            </span>
+            <h2>Parámetros del Cliente</h2>
+          </div>
+          <p>
+            Rellene las variables sociodemográficas y financieras para la
+            evaluación predictiva.
+          </p>
+
+          <div class="quick-examples">
+            <span class="quick-label">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                ></polygon>
+              </svg>
+              Cargar ejemplo:
+            </span>
+            <div class="quick-buttons">
+              <button
+                type="button"
+                class="btn-pill btn-pill-low"
+                data-example="low"
+              >
+                <span class="pill-dot"></span>
+                20% (Bajo)
+              </button>
+              <button
+                type="button"
+                class="btn-pill btn-pill-medium"
+                data-example="medium"
+              >
+                <span class="pill-dot"></span>
+                40% (Medio)
+              </button>
+              <button
+                type="button"
+                class="btn-pill btn-pill-high"
+                data-example="high"
+              >
+                <span class="pill-dot"></span>
+                80% (Alto)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-cliente">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="id_cliente">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                ID del Cliente
+              </label>
+              <input
+                type="text"
+                id="id_cliente"
+                name="id_cliente"
+                value="CLI-8492"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edad">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </span>
+                Edad (Años)
+              </label>
+              <input
+                type="number"
+                id="edad"
+                name="edad"
+                min="18"
+                max="120"
+                value="42"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ingresos_anuales">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path
+                      d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                    ></path>
+                  </svg>
+                </span>
+                Ingresos Anuales (€)
+              </label>
+              <input
+                type="number"
+                step="any"
+                id="ingresos_anuales"
+                name="ingresos_anuales"
+                value="48000"
+                min="1"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="saldo_cuenta">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="2"
+                      y="7"
+                      width="20"
+                      height="14"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </span>
+                Saldo en Cuenta (€)
+              </label>
+              <input
+                type="number"
+                step="any"
+                id="saldo_cuenta"
+                name="saldo_cuenta"
+                value="14200"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="num_productos">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+                    ></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </span>
+                Nº Productos Contratados
+              </label>
+              <input
+                type="number"
+                id="num_productos"
+                name="num_productos"
+                min="1"
+                max="10"
+                value="2"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="antiguedad_meses">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </span>
+                Antigüedad (Meses)
+              </label>
+              <input
+                type="number"
+                id="antiguedad_meses"
+                name="antiguedad_meses"
+                min="0"
+                max="360"
+                value="60"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tipo_cuenta">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                    ></path>
+                  </svg>
+                </span>
+                Tipo de Cuenta
+              </label>
+              <select id="tipo_cuenta" name="tipo_cuenta" required>
+                <option value="Ahorro" selected>Ahorro</option>
+                <option value="Corriente">Corriente</option>
+                <option value="Nomina">Nómina</option>
+                <option value="Inversion">Inversión</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="canal_preferido">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="5"
+                      y="2"
+                      width="14"
+                      height="20"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                </span>
+                Canal Preferido
+              </label>
+              <select id="canal_preferido" name="canal_preferido" required>
+                <option value="App Movil" selected>App Móvil</option>
+                <option value="Web">Web</option>
+                <option value="Oficina">Oficina Física</option>
+                <option value="Telefono">Teléfono</option>
+                <option value="Cajero Antiguo">Cajero Antiguo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nivel_estudios">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </span>
+                Nivel de Estudios
+              </label>
+              <select id="nivel_estudios" name="nivel_estudios" required>
+                <option value="Primaria">Primaria</option>
+                <option value="Secundaria">Secundaria</option>
+                <option value="Grado" selected>Grado</option>
+                <option value="Master">Máster</option>
+                <option value="Doctorado">Doctorado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nivel_satisfaccion">
+                <span class="label-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                  </svg>
+                </span>
+                Nivel de Satisfacción
+              </label>
+              <select
+                id="nivel_satisfaccion"
+                name="nivel_satisfaccion"
+                required
+              >
+                <option value="Muy Bajo">Muy Bajo</option>
+                <option value="Bajo">Bajo</option>
+                <option value="Medio">Medio</option>
+                <option value="Alto" selected>Alto</option>
+                <option value="Muy Alto">Muy Alto</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="tiene_tarjeta"
+                name="tiene_tarjeta"
+                value="1"
+                checked
+              />
+              <span
+                >El cliente dispone de tarjeta bancaria activa vinculada</span
+              >
+            </label>
+          </div>
+
+          <button type="submit" id="btn-calcular" class="btn-primary">
+            <svg
+              class="btn-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon
+                points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+              ></polygon>
+            </svg>
+            <span class="btn-text">Calcular Riesgo de Abandono</span>
+            <span class="spinner" style="display: none"></span>
+          </button>
+        </form>
+      </section>
+
+      <section class="card result-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-title-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </span>
+            <h2>Diagnóstico Predictivo</h2>
+          </div>
+          <p>
+            Inferencia obtenida mediante KNeighborsClassifier con preprocesador
+            modular.
+          </p>
+        </div>
+
+        <div id="resultado-vacio" class="empty-state">
+          <div class="empty-icon-wrap">
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <p>
+            Introduce los datos a la izquierda y pulsa en
+            <strong>Calcular Riesgo</strong> para obtener la predicción.
+          </p>
+        </div>
+
+        <div id="resultado-contenido" class="result-box" style="display: none">
+          <div class="badge-container">
+            <span id="badge-riesgo" class="badge">RIESGO BAJO</span>
+            <span id="badge-veredicto" class="veredicto-text"
+              >Cliente fidelizado</span
+            >
+          </div>
+
+          <div class="probabilidad-container">
+            <div class="prob-header">
+              <span>Probabilidad Estimada de Fuga</span>
+              <strong id="probabilidad-valor">20.0%</strong>
+            </div>
+            <div class="progress-bar-bg">
+              <div
+                id="progress-bar-fill"
+                class="progress-bar-fill"
+                style="width: 20%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <span class="metric-label">Identificador</span>
+              <strong id="res-id-cliente" class="metric-value">CLI-8492</strong>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Predicción Binaria</span>
+              <strong id="res-abandono" class="metric-value"
+                >0 (Fidelizado)</strong
+              >
+            </div>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="recommendation-header">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                ></path>
+              </svg>
+              <h4>Acción Comercial Recomendada</h4>
+            </div>
+            <p id="res-accion">Sin acción requerida. Cliente fidelizado.</p>
+          </div>
+        </div>
+
+        <div id="resultado-error" class="error-box" style="display: none">
+          <span class="error-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
           </span>
-          <h2>Parámetros del Cliente</h2>
-        </div>
-        <p>Rellene las variables sociodemográficas y financieras para la evaluación predictiva.</p>
-
-        <!-- Botones de Ejemplos Rápidos -->
-        <div class="quick-examples">
-          <span class="quick-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-            Cargar ejemplo:
-          </span>
-          <div class="quick-buttons">
-            <button type="button" class="btn-pill btn-pill-low" data-example="low">
-              <span class="pill-dot"></span>
-              20% (Bajo)
-            </button>
-            <button type="button" class="btn-pill btn-pill-medium" data-example="medium">
-              <span class="pill-dot"></span>
-              40% (Medio)
-            </button>
-            <button type="button" class="btn-pill btn-pill-high" data-example="high">
-              <span class="pill-dot"></span>
-              80% (Alto)
-            </button>
+          <div>
+            <h4>Error en el cálculo</h4>
+            <p id="error-mensaje">No se ha podido procesar la petición.</p>
           </div>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <form id="form-cliente">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="id_cliente">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              </span>
-              ID del Cliente
-            </label>
-            <input type="text" id="id_cliente" name="id_cliente" value="CLI-8492" required>
-          </div>
-          <div class="form-group">
-            <label for="edad">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </span>
-              Edad (Años)
-            </label>
-            <input type="number" id="edad" name="edad" min="18" max="120" value="42" required>
-          </div>
-        </div>
+    <footer class="footer">
+      <p>
+        Proyecto 1: Despliegue de un sistema de predicción de abandono bancario
+        • Asignatura PIA (UT3)
+      </p>
+    </footer>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="ingresos_anuales">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              </span>
-              Ingresos Anuales (€)
-            </label>
-            <input type="number" step="any" id="ingresos_anuales" name="ingresos_anuales" value="48000" min="1" required>
-          </div>
-          <div class="form-group">
-            <label for="saldo_cuenta">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-              </span>
-              Saldo en Cuenta (€)
-            </label>
-            <input type="number" step="any" id="saldo_cuenta" name="saldo_cuenta" value="14200" min="0" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="num_productos">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-              </span>
-              Nº Productos Contratados
-            </label>
-            <input type="number" id="num_productos" name="num_productos" min="1" max="10" value="2" required>
-          </div>
-          <div class="form-group">
-            <label for="antiguedad_meses">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </span>
-              Antigüedad (Meses)
-            </label>
-            <input type="number" id="antiguedad_meses" name="antiguedad_meses" min="0" max="360" value="60" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="tipo_cuenta">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              </span>
-              Tipo de Cuenta
-            </label>
-            <select id="tipo_cuenta" name="tipo_cuenta" required>
-              <option value="Ahorro" selected>Ahorro</option>
-              <option value="Corriente">Corriente</option>
-              <option value="Nomina">Nómina</option>
-              <option value="Inversion">Inversión</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="canal_preferido">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-              </span>
-              Canal Preferido
-            </label>
-            <select id="canal_preferido" name="canal_preferido" required>
-              <option value="App Movil" selected>App Móvil</option>
-              <option value="Web">Web</option>
-              <option value="Oficina">Oficina Física</option>
-              <option value="Telefono">Teléfono</option>
-              <option value="Cajero Antiguo">Cajero Antiguo</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nivel_estudios">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-              </span>
-              Nivel de Estudios
-            </label>
-            <select id="nivel_estudios" name="nivel_estudios" required>
-              <option value="Primaria">Primaria</option>
-              <option value="Secundaria">Secundaria</option>
-              <option value="Grado" selected>Grado</option>
-              <option value="Master">Máster</option>
-              <option value="Doctorado">Doctorado</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="nivel_satisfaccion">
-              <span class="label-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-              </span>
-              Nivel de Satisfacción
-            </label>
-            <select id="nivel_satisfaccion" name="nivel_satisfaccion" required>
-              <option value="Muy Bajo">Muy Bajo</option>
-              <option value="Bajo">Bajo</option>
-              <option value="Medio">Medio</option>
-              <option value="Alto" selected>Alto</option>
-              <option value="Muy Alto">Muy Alto</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group checkbox-group">
-          <label class="checkbox-label">
-            <input type="checkbox" id="tiene_tarjeta" name="tiene_tarjeta" value="1" checked>
-            <span>El cliente dispone de tarjeta bancaria activa vinculada</span>
-          </label>
-        </div>
-
-        <button type="submit" id="btn-calcular" class="btn-primary">
-          <!-- SVG: Relámpago / AI -->
-          <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-          </svg>
-          <span class="btn-text">Calcular Riesgo de Abandono</span>
-          <span class="spinner" style="display: none;"></span>
-        </button>
-
-      </form>
-    </section>
-
-    <!-- Columna Derecha: Resultado -->
-    <section class="card result-card">
-      <div class="card-header">
-        <div class="card-title-group">
-          <span class="card-title-icon">
-            <!-- SVG: Gráfico de radar / analytics -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
-          </span>
-          <h2>Diagnóstico Predictivo</h2>
-        </div>
-        <p>Inferencia obtenida mediante KNeighborsClassifier con preprocesador modular.</p>
-      </div>
-
-      <!-- Estado inicial vacío -->
-      <div id="resultado-vacio" class="empty-state">
-        <div class="empty-icon-wrap">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 6v6l4 2"></path>
-          </svg>
-        </div>
-        <p>Introduce los datos a la izquierda y pulsa en <strong>Calcular Riesgo</strong> para obtener la predicción.</p>
-      </div>
-
-      <!-- Estado con resultados -->
-      <div id="resultado-contenido" class="result-box" style="display: none;">
-        
-        <div class="badge-container">
-          <span id="badge-riesgo" class="badge">RIESGO BAJO</span>
-          <span id="badge-veredicto" class="veredicto-text">Cliente fidelizado</span>
-        </div>
-
-        <div class="probabilidad-container">
-          <div class="prob-header">
-            <span>Probabilidad Estimada de Fuga</span>
-            <strong id="probabilidad-valor">20.0%</strong>
-          </div>
-          <div class="progress-bar-bg">
-            <div id="progress-bar-fill" class="progress-bar-fill" style="width: 20%;"></div>
-          </div>
-        </div>
-
-        <div class="metrics-grid">
-          <div class="metric-item">
-            <span class="metric-label">Identificador</span>
-            <strong id="res-id-cliente" class="metric-value">CLI-8492</strong>
-          </div>
-          <div class="metric-item">
-            <span class="metric-label">Predicción Binaria</span>
-            <strong id="res-abandono" class="metric-value">0 (Fidelizado)</strong>
-          </div>
-        </div>
-
-        <div class="recommendation-card">
-          <div class="recommendation-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-            </svg>
-            <h4>Acción Comercial Recomendada</h4>
-          </div>
-          <p id="res-accion">Sin acción requerida. Cliente fidelizado.</p>
-        </div>
-
-      </div>
-
-      <!-- Alerta de Error -->
-      <div id="resultado-error" class="error-box" style="display: none;">
-        <span class="error-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-          </svg>
-        </span>
-        <div>
-          <h4>Error en el cálculo</h4>
-          <p id="error-mensaje">No se ha podido procesar la petición.</p>
-        </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>Proyecto 1: Despliegue de un sistema de predicción de abandono bancario • Asignatura PIA (UT3)</p>
-  </footer>
-
-  <script src="/static/js/app.js"></script>
-</body>
+    <script src="/static/js/app.js"></script>
+  </body>
 </html>
