@@ -15,7 +15,7 @@ Aplicación web con **FastAPI** para evaluar la rentabilidad y viabilidad de vid
 
 ## URL pública
 
-**[https://ut2-fastapi-alejandroandres.onrender.com/](https://ut2-fastapi-alejandroandres.onrender.com/)**
+**[https://ejs1-alejandroandres.onrender.com/](https://ejs1-alejandroandres.onrender.com/)**
 
 ---
 
